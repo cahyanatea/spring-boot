@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,5 +27,10 @@ public class PinjamBukuController {
 	@GetMapping(value = "/buku/{id}")
 	public Buku getBukuById(@PathVariable("id") Integer id) {
 		return pinjamBukuService.getBukuById(id);
+	}
+	
+	@DeleteMapping(value = "/buku/{idBuku}")
+	public void deleteBuku(@PathVariable(name = "idBuku") Integer idBuku) {
+		pinjamBukuService.deleteBuku(idBuku);
 	}
 }
