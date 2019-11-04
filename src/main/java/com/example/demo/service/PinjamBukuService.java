@@ -24,4 +24,12 @@ public class PinjamBukuService {
 	public void deleteBuku(Integer idBuku) {
 		pinjamBukuDao.deleteById(idBuku);
 	}
+	
+	public Buku updateBuku(Buku buku) {
+		return pinjamBukuDao.save(buku);
+	}
+	
+	public Iterable<Buku> getBuku() {
+		return pinjamBukuDao.findAll();
+	}
 }
