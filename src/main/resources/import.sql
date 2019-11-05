@@ -1,0 +1,1 @@
+INSERT INTO buku (judul, penulis, penerbit, tahun_terbit) VALUES ('Pemrograman Java', 'Pt. Media', 'Asep Cahyana', '2019');
