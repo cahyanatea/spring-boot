@@ -44,4 +44,9 @@ public class PinjamBukuController {
 	public Iterable<Buku> getBuku() {
 		return pinjamBukuService.getBuku();
 	}
+	
+	@GetMapping(value= "/buku/penulis/{penulis}")
+	public Iterable<Buku> getByPenulis(@PathVariable(name = "penulis") String penulis) {
+		return pinjamBukuService.getByPenulis(penulis);
+	}
 }
