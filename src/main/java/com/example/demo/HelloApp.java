@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +15,9 @@ public class HelloApp implements CommandLineRunner {
 	
 	@Autowired
 	private PinjamBukuService pinjamBukuService;
+	
+	@Autowired
+	private DataSource dataSource;
 
 	public static void main(String[] args) {
 		SpringApplication.run(HelloApp.class, args);
@@ -27,5 +32,7 @@ public class HelloApp implements CommandLineRunner {
 		buku.setTahunTerbit(2010);
 		
 		pinjamBukuService.pinjamBuku(buku);
+		
+		System.out.println("DataSource : " + dataSource);
 	}
 }
