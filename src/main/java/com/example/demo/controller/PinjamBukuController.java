@@ -49,4 +49,9 @@ public class PinjamBukuController {
 	public Iterable<Buku> getByPenulis(@PathVariable(name = "penulis") String penulis) {
 		return pinjamBukuService.getByPenulis(penulis);
 	}
+	
+	@GetMapping(value = "/buku/tahun/{tahun}")
+	public Iterable<Buku> getSebelumTahun(@PathVariable(name = "tahun") Integer tahun) {
+		return pinjamBukuService.findByTahunTerbitLessThan(tahun);
+	}
 }

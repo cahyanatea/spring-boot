@@ -37,4 +37,8 @@ public class PinjamBukuService {
 	public Iterable<Buku> getByPenulis(String penulis) {
 		return pinjamBukuDao.getByPenulis(penulis);
 	}
+	
+	public Iterable<Buku> findByTahunTerbitLessThan(Integer tahun) {
+		return pinjamBukuDao.findByTahunTerbitLessThan(tahun);
+	}
 }
