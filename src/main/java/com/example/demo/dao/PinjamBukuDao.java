@@ -12,9 +12,9 @@ public interface PinjamBukuDao extends CrudRepository<Buku, Integer> {
 	//https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation
 	public Iterable<Buku> findByTahunTerbitLessThan(Integer tahun);
         
-        @Query(value = "SELECT b FROM Buku b")
+        @Query(value = "SELECT * FROM buku", nativeQuery = true)
         public Iterable<Buku> ambilSemuaBuku();
         
-        @Query(value = "SELECT b FROM Buku b WHERE b.bukuId = ?1")
+        @Query(value = "SELECT * FROM buku WHERE buku_id = ?1", nativeQuery = true)
         public Buku ambilBukuDariId(Integer id);
 }
