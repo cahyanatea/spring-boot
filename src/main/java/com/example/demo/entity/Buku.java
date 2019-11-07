@@ -5,18 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedNativeQueries;
-import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
-import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-// @NamedQuery demo
-@DynamicUpdate
-@NamedNativeQueries(value = {
-    @NamedNativeQuery(name = "Buku.ambilSemuaBuku", query = "SELECT * FROM buku"),
-    @NamedNativeQuery(name = "Buku.ambilBukuDariId", query = "SELECT * FROM buku WHERE buku_id = ?1")
-})
 @Table(name = "buku")
 public class Buku {
 

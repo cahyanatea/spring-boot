@@ -55,14 +55,14 @@ public class PinjamBukuController {
 		return pinjamBukuService.findByTahunTerbitLessThan(tahun);
 	}
         
-        // @NamedQuery demo
+        // @Query demo
         @GetMapping(value = "/named")
         public Iterable<Buku> ambilSemuaBuku() {
             return pinjamBukuService.ambilSemuaBuku();
         }
         
         @GetMapping(value = "/named/{id}")
-        public Iterable<Buku> ambilBukuDariId(@PathVariable(name = "id") Integer id) {
+        public Buku ambilBukuDariId(@PathVariable(name = "id") Integer id) {
             return pinjamBukuService.ambilBukuDariId(id);
         }
 }

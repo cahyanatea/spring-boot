@@ -40,12 +40,11 @@ public class PinjamBukuService {
 		return pinjamBukuDao.findByTahunTerbitLessThan(tahun);
 	}
         
-        // @NamedQuery demo
         public Iterable<Buku> ambilSemuaBuku() {
             return pinjamBukuDao.ambilSemuaBuku();
         }
         
-        public Iterable<Buku> ambilBukuDariId(Integer id) {
+        public Buku ambilBukuDariId(Integer id) {
             return pinjamBukuDao.ambilBukuDariId(id);
         }
 }
