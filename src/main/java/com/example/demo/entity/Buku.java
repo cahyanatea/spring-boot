@@ -5,9 +5,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
+// @NamedQuery demo
+@DynamicUpdate
+@NamedQueries(value = {
+    @NamedQuery(name = "Buku.ambilSemuaBuku", query = "SELECT b FROM Buku b"),
+    @NamedQuery(name = "Buku.ambilBukuDariId", query = "SELECT b FROM Buku b WHERE b.bukuId = ?1")
+})
 @Table(name = "buku")
 public class Buku {
 

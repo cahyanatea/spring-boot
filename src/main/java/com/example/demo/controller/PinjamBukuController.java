@@ -54,4 +54,15 @@ public class PinjamBukuController {
 	public Iterable<Buku> getSebelumTahun(@PathVariable(name = "tahun") Integer tahun) {
 		return pinjamBukuService.findByTahunTerbitLessThan(tahun);
 	}
+        
+        // @NamedQuery demo
+        @GetMapping(value = "/named")
+        public Iterable<Buku> ambilSemuaBuku() {
+            return pinjamBukuService.ambilSemuaBuku();
+        }
+        
+        @GetMapping(value = "/named/{id}")
+        public Buku ambilBukuDariId(@PathVariable(name = "id") Integer id) {
+            return pinjamBukuService.ambilBukuDariId(id);
+        }
 }

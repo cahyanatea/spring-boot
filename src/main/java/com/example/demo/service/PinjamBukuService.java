@@ -1,7 +1,5 @@
 package com.example.demo.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,4 +39,13 @@ public class PinjamBukuService {
 	public Iterable<Buku> findByTahunTerbitLessThan(Integer tahun) {
 		return pinjamBukuDao.findByTahunTerbitLessThan(tahun);
 	}
+        
+        // @NamedQuery demo
+        public Iterable<Buku> ambilSemuaBuku() {
+            return pinjamBukuDao.ambilSemuaBuku();
+        }
+        
+        public Buku ambilBukuDariId(Integer id) {
+            return pinjamBukuDao.ambilBukuDariId(id);
+        }
 }
