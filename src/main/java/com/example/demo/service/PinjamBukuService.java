@@ -45,7 +45,7 @@ public class PinjamBukuService {
             return pinjamBukuDao.ambilSemuaBuku();
         }
         
-        public Buku ambilBukuDariId(Integer id) {
+        public Iterable<Buku> ambilBukuDariId(Integer id) {
             return pinjamBukuDao.ambilBukuDariId(id);
         }
 }

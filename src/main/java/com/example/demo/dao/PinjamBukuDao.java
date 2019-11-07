@@ -13,5 +13,5 @@ public interface PinjamBukuDao extends CrudRepository<Buku, Integer> {
         
         public Iterable<Buku> ambilSemuaBuku();
         
-        public Buku ambilBukuDariId(Integer id);
+        public Iterable<Buku> ambilBukuDariId(Integer id);
 }

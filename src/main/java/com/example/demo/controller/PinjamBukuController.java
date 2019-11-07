@@ -62,7 +62,7 @@ public class PinjamBukuController {
         }
         
         @GetMapping(value = "/named/{id}")
-        public Buku ambilBukuDariId(@PathVariable(name = "id") Integer id) {
+        public Iterable<Buku> ambilBukuDariId(@PathVariable(name = "id") Integer id) {
             return pinjamBukuService.ambilBukuDariId(id);
         }
 }
