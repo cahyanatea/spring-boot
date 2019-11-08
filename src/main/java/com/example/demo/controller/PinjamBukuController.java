@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Buku;
 import com.example.demo.service.PinjamBukuService;
+import java.util.List;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -64,5 +67,10 @@ public class PinjamBukuController {
         @GetMapping(value = "/named/{id}")
         public Buku ambilBukuDariId(@PathVariable(name = "id") Integer id) {
             return pinjamBukuService.ambilBukuDariId(id);
+        }
+        
+        @GetMapping(value = "/page/{page}")
+        public List<Buku> getAllBuku(@PathVariable(name = "page") Integer page) {
+            return pinjamBukuService.getAllBuku(PageRequest.of(page, 2, Sort.Direction.ASC, "judul"));
         }
 }

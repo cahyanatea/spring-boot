@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.PinjamBukuDao;
 import com.example.demo.entity.Buku;
+import java.util.List;
+import org.springframework.data.domain.Pageable;
 
 @Service
 public class PinjamBukuService {
@@ -46,5 +48,9 @@ public class PinjamBukuService {
         
         public Buku ambilBukuDariId(Integer id) {
             return pinjamBukuDao.ambilBukuDariId(id);
+        }
+        
+        public List<Buku> getAllBuku(Pageable pageable) {
+            return pinjamBukuDao.getAllBuku(pageable);
         }
 }

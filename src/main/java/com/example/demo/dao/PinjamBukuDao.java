@@ -1,6 +1,8 @@
 package com.example.demo.dao;
 
 import com.example.demo.entity.Buku;
+import java.util.List;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 
 import org.springframework.data.repository.CrudRepository;
@@ -17,4 +19,7 @@ public interface PinjamBukuDao extends CrudRepository<Buku, Integer> {
         
         @Query(value = "SELECT * FROM buku WHERE buku_id = ?1", nativeQuery = true)
         public Buku ambilBukuDariId(Integer id);
+        
+        @Query("SELECT b FROM Buku b")
+        public List<Buku> getAllBuku(Pageable pageable);
 }
