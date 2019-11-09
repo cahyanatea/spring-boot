@@ -53,4 +53,8 @@ public class PinjamBukuService {
         public List<Buku> getAllBuku(Pageable pageable) {
             return pinjamBukuDao.getAllBuku(pageable);
         }
+        
+        public List<Buku> cariBuku(String judul) {
+            return pinjamBukuDao.cariBuku(judul);
+        }
 }

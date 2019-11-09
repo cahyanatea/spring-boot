@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 public interface PinjamBukuDao extends CrudRepository<Buku, Integer> {
 
@@ -22,4 +23,7 @@ public interface PinjamBukuDao extends CrudRepository<Buku, Integer> {
         
         @Query("SELECT b FROM Buku b")
         public List<Buku> getAllBuku(Pageable pageable);
+        
+        @Query("SELECT b FROM Buku b WHERE b.judul like %:judul%")
+        public List<Buku> cariBuku(@Param("judul") String judul);
 }

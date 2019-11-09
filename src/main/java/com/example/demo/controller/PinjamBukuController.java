@@ -73,4 +73,9 @@ public class PinjamBukuController {
         public List<Buku> getAllBuku(@PathVariable(name = "page") Integer page) {
             return pinjamBukuService.getAllBuku(PageRequest.of(page, 2, Sort.Direction.ASC, "judul"));
         }
+        
+        @GetMapping(value = "/cari/{judul}")
+        public List<Buku> cariBuku(@PathVariable(name = "judul") String judul) {
+            return pinjamBukuService.cariBuku(judul);
+        }
 }
