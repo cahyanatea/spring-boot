@@ -78,4 +78,9 @@ public class PinjamBukuController {
         public List<Buku> cariBuku(@PathVariable(name = "judul") String judul) {
             return pinjamBukuService.cariBuku(judul);
         }
+        
+        @PutMapping(value = "/update")
+        public int updateTahun(@RequestBody Buku buku) {
+            return pinjamBukuService.updateTahun(buku.getBukuId(), buku.getTahunTerbit());
+        }
 }

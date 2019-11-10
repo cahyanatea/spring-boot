@@ -57,4 +57,8 @@ public class PinjamBukuService {
         public List<Buku> cariBuku(String judul) {
             return pinjamBukuDao.cariBuku(judul);
         }
+        
+        public int updateTahun(Integer id, Integer tahun) {
+            return pinjamBukuDao.updateTahun(id, tahun);
+        }
 }

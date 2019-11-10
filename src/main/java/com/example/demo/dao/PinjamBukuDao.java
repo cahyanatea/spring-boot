@@ -3,10 +3,12 @@ package com.example.demo.dao;
 import com.example.demo.entity.Buku;
 import java.util.List;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface PinjamBukuDao extends CrudRepository<Buku, Integer> {
 
@@ -26,4 +28,9 @@ public interface PinjamBukuDao extends CrudRepository<Buku, Integer> {
         
         @Query("SELECT b FROM Buku b WHERE b.judul like %:judul%")
         public List<Buku> cariBuku(@Param("judul") String judul);
+        
+        @Transactional
+        @Modifying
+        @Query("UPDATE Buku b SET b.tahunTerbit = :tahun WHERE b.bukuId = :id")
+        public int updateTahun(@Param("id") Integer id, @Param("tahun") Integer tahun);
 }
