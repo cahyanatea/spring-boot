@@ -30,7 +30,7 @@ public interface PinjamBukuDao extends CrudRepository<Buku, Integer> {
         public List<Buku> cariBuku(@Param("judul") String judul);
         
         @Transactional
-        @Modifying
+        @Modifying(clearAutomatically = true)
         @Query("UPDATE Buku b SET b.tahunTerbit = :tahun WHERE b.bukuId = :id")
         public int updateTahun(@Param("id") Integer id, @Param("tahun") Integer tahun);
 }
