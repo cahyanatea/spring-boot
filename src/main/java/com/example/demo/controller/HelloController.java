@@ -5,21 +5,22 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.context.request.ServletWebRequest;
-import org.springframework.web.context.request.WebRequest;
 
 @RestController
 public class HelloController implements ErrorController {
     
     private static final String ERROR_PATH = "/error";
+    
+    @Value("${pesan.config}")
+    String pesan;
     
     @Autowired
     private DefaultErrorAttributes errorAttributes;
@@ -42,6 +43,11 @@ public class HelloController implements ErrorController {
     @GetMapping(value = ERROR_PATH)
     public ErrorJson pesanError(HttpServletRequest request, HttpServletResponse response) {
         return new ErrorJson(response.getStatus(), getErrorAttributes(request, false));
+    }
+    
+    @GetMapping(value = "/pesan")
+    public String pesan() {
+        return pesan;
     }
 
     @Override
