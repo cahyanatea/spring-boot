@@ -1,15 +1,28 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.ErrorJson;
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.context.request.ServletWebRequest;
+import org.springframework.web.context.request.WebRequest;
 
 @RestController
 public class HelloController implements ErrorController {
     
     private static final String ERROR_PATH = "/error";
+    
+    @Autowired
+    private DefaultErrorAttributes errorAttributes;
 
 	@RequestMapping(value = "/")
 	public String sayHello() {
@@ -27,12 +40,17 @@ public class HelloController implements ErrorController {
 	}
         
     @GetMapping(value = ERROR_PATH)
-    public String pesanError() {
-        return "Page tidak ditemukan.";
+    public ErrorJson pesanError(HttpServletRequest request, HttpServletResponse response) {
+        return new ErrorJson(response.getStatus(), getErrorAttributes(request, false));
     }
 
     @Override
     public String getErrorPath() {
         return ERROR_PATH;
+    }
+
+    public Map<String, Object> getErrorAttributes(HttpServletRequest request, boolean includeStactTrace) {
+        ServletWebRequest servletWebRequest = new ServletWebRequest(request);
+        return errorAttributes.getErrorAttributes(servletWebRequest, includeStactTrace);
     }
 }
