@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.ErrorJson;
+import com.example.demo.service.MessageProviderService;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,9 @@ import org.springframework.web.context.request.ServletWebRequest;
 public class HelloController implements ErrorController {
     
     private static final String ERROR_PATH = "/error";
+    
+    @Autowired
+    private MessageProviderService messageProviderService;
     
     @Value("${pesan.config}")
     String pesan;
@@ -58,5 +62,10 @@ public class HelloController implements ErrorController {
     public Map<String, Object> getErrorAttributes(HttpServletRequest request, boolean includeStactTrace) {
         ServletWebRequest servletWebRequest = new ServletWebRequest(request);
         return errorAttributes.getErrorAttributes(servletWebRequest, includeStactTrace);
+    }
+    
+    @GetMapping(value = "xmldemo")
+    public String xmlDemo() {
+        return messageProviderService.getMessage();
     }
 }
